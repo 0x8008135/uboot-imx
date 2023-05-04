@@ -15,6 +15,24 @@
 	compatible = "phytec,imx8mp-phyboard-pollux-rdk",
 		     "phytec,imx8mp-phycore-som", "fsl,imx8mp";
 
+	sysinfo {
+		compatible = "u-boot,sysinfo-smbios";
+		smbios {
+			system {
+				manufacturer = "phytec";
+				product = "pollux";
+			};
+			baseboard {
+				manufacturer = "phytec";
+				product = "pollux";
+			};
+			chassis {
+				manufacturer = "phytec";
+				product = "pollux";
+			};
+		};
+	};
+
 	chosen {
 		stdout-path = &uart1;
 	};

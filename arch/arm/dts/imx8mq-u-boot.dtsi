@@ -104,6 +104,18 @@
 					};
 				};
 
+				fdt-kernel {
+					compression = "none";
+					description = "NAME";
+					type = "flat_dt";
+					load = <0x43000000>;
+
+					kernel-fdt-blob {
+						filename = "arch/arm/dts/imx8mq-evk.dtb";
+						type = "blob-ext";
+					};
+				};
+
 				fdt {
 					compression = "none";
 					description = "NAME";
@@ -123,7 +135,7 @@
 					description = "NAME";
 					fdt = "fdt";
 					firmware = "uboot";
-					loadables = "atf";
+					loadables = "atf", "fdt-kernel";
 				};
 			};
 		};

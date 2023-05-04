@@ -30,6 +30,8 @@
 #include "../common/pfuze.h"
 #include <usb.h>
 #include <dwc3-uboot.h>
+#include <fdt_support.h>
+#include <fdt_simplefb.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -296,6 +298,16 @@ int board_late_init(void)
 #endif
 
 	return 0;
+}
+
+int ft_board_setup(void *blob, struct bd_info *bd)
+{
+	int node;
+	node = fdt_node_offset_by_compatible(blob, -1, "simple-framebuffer");
+	if (node < 0) {
+ 		fdt_simplefb_add_node(blob);
+		fdt_simplefb_enable_existing_node(blob);
+	}
 }
 
 #ifdef CONFIG_ANDROID_SUPPORT

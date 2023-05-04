@@ -18,6 +18,24 @@
 		rtc1 = &snvs_rtc;
 	};
 
+	sysinfo {
+		compatible = "u-boot,sysinfo-smbios";
+		smbios {
+			system {
+				manufacturer = "advantech";
+				product = "imx8mp_rsb3720a1";
+			};
+			baseboard {
+				manufacturer = "advantech";
+				product = "imx8mp_rsb3720a1";
+			};
+			chassis {
+				manufacturer = "advantech";
+				product = "imx8mp_rsb3720a1";
+			};
+		};
+	};
+
 	chosen {
 		stdout-path = &uart3;
 	};
@@ -152,6 +170,25 @@
 	status = "okay";
 };
 
+&eqos {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_eqos>;
+	phy-mode = "rgmii-id";
+	phy-handle = <&ethphy0>;
+	status = "okay";
+
+	mdio {
+		compatible = "snps,dwmac-mdio";
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		ethphy0: ethernet-phy@1 {
+			compatible = "ethernet-phy-ieee802.3-c22";
+			reg = <1>;
+		};
+	};
+};
+
 &fec {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_fec>;
@@ -164,9 +201,9 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-		ethphy1: ethernet-phy@4 {
+		ethphy1: ethernet-phy@1 {
 			compatible = "ethernet-phy-ieee802.3-c22";
-			reg = <4>;
+			reg = <1>;
 			at803x,eee-disabled;
 			at803x,vddio-1p8v;
 		};
