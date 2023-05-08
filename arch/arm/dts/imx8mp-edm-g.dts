@@ -13,6 +13,24 @@
 	model = "TechNexion EDM-G-IMX8MP";
 	compatible = "fsl,imx8mp-edm-g", "fsl,imx8mp";
 
+	sysinfo {
+		compatible = "u-boot,sysinfo-smbios";
+		smbios {
+			system {
+				manufacturer = "technexion";
+				product = "edm-g-imx8mp";
+			};
+			baseboard {
+				manufacturer = "technexion";
+				product = "edm-g-imx8mp";
+			};
+			chassis {
+				manufacturer = "technexion";
+				product = "edm-g-imx8mp";
+			};
+		};
+	};
+
 	chosen {
 		bootargs = "console=ttymxc1,115200 earlycon=ec_imx6q,0x30890000,115200";
 		stdout-path = &uart2;

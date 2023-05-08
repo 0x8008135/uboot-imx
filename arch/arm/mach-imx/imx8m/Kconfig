@@ -60,6 +60,7 @@ choice
 
 config TARGET_EDM_G_IMX8MP
 	bool "TechNexion EDM-G-IMX8MP"
+	select BINMAN
 	select IMX8MP
 	select SUPPORT_SPL
 	select IMX8M_LPDDR4
